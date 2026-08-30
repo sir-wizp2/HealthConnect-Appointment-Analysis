@@ -1,7 +1,7 @@
 # HealthConnect-Appointment-Analysis
 Analysis of HealthConnect appointment data to identify factors influencing patient attendance, no-shows, waiting times, and reminder effectiveness
 
-## 📌 Project Overview
+## Project Overview
 
 This project is part of the **AnalystLab Africa Week 4 Experience Lab Assignment**.
 
@@ -11,7 +11,7 @@ The analysis is designed to provide HealthConnect with data-driven insights that
 
 ---
 
-## 🎯 Business Objective
+## Business Objective
 
 The main objective of this project is to understand patterns in appointment attendance and identify factors that may influence patient behaviour.
 
@@ -29,7 +29,7 @@ The analysis aims to answer questions such as:
 
 ---
 
-## 📊 Dataset
+## Dataset
 
 The HealthConnect Appointment dataset contains:
 
@@ -69,7 +69,7 @@ Missing values will therefore be investigated and handled based on the business 
 
 ---
 
-## 📈 Proposed KPIs
+## Proposed KPIs
 
 The following KPIs were proposed for the analysis:
 
@@ -130,7 +130,7 @@ The analysis will follow these stages:
 
 ---
 
-## ⚠️ Assumptions and Limitations
+## Assumptions and Limitations
 
 ### Assumptions
 
