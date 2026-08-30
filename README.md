@@ -49,7 +49,7 @@ The dataset contains a combination of:
 
 ---
 
-## 🔍 Data Quality Assessment
+## Data Quality Assessment
 
 An initial data quality assessment was conducted before analysis.
 
