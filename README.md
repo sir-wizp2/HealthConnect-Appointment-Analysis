@@ -1,267 +1,175 @@
-# HealthConnect Appointment Attendance & Patient Experience Analysis
+# HealthConnect Appointment Experience Analysis
 
 ## Project Overview
 
-HealthConnect is a fictional healthcare clinic seeking to improve patient appointment attendance, reduce missed appointments, optimise appointment slots, and enhance the overall patient experience.
+This project is part of the **AnalystLab Africa Week 4 Experience Lab Assignment**.
 
-This project analyses HealthConnect appointment data to identify patterns associated with appointment attendance, cancellations, no-shows, reminders, waiting times, booking behaviour, and patient characteristics.
+The project focuses on analysing HealthConnect appointment data to understand patient appointment behaviour, identify factors associated with missed appointments, evaluate the effectiveness of appointment reminders, and assess aspects of the overall patient experience.
 
-The project was completed as part of the **AnalystLab Africa Experience Lab – Data Analytics Track**.
+The analysis is designed to provide HealthConnect with data-driven insights that can support better appointment management, reduce no-shows, improve waiting times, and enhance the patient experience.
 
 ---
 
-## Project Objective
+## Business Objective
 
-The main objective of this project is to use data analytics and business intelligence to help HealthConnect:
+The main objective of this project is to understand patterns in appointment attendance and identify factors that may influence patient behaviour.
 
-- Understand appointment attendance patterns
-- Identify factors associated with missed appointments
-- Evaluate the relationship between appointment reminders and attendance
-- Understand patient waiting-time patterns
-- Identify groups with higher no-show rates
-- Generate actionable recommendations for improving appointment attendance and patient experience
+The analysis aims to answer questions such as:
 
-### Central Project Question
-
-> **How can HealthConnect Clinic use data and AI to reduce missed appointments and improve the patient support experience?**
+- What percentage of appointments are attended, cancelled, or missed?
+- Which factors are associated with appointment no-shows?
+- Does booking lead time affect appointment attendance?
+- How does the use of appointment reminders affect attendance?
+- Does distance to the clinic influence no-show behaviour?
+- Which patient groups have the highest attendance and no-show rates?
+- What is the average patient waiting time?
+- Which appointment types experience higher waiting times or no-show rates?
+- What areas of the appointment process can HealthConnect improve?
 
 ---
 
 ## Dataset
 
-The analysis uses the **HealthConnect Appointment Dataset**, a fictional and anonymised healthcare appointment dataset provided as part of the AnalystLab Africa Experience Lab.
+The HealthConnect Appointment dataset contains:
 
-The dataset contains appointment-level information relating to:
+- **5,000 appointment records**
+- **18 columns**
 
-- Patient demographics
-- Appointment details
-- Booking information
-- Previous appointment history
-- Previous no-shows
-- Appointment reminders
-- Distance to the clinic
+The dataset contains a combination of:
+
+- Appointment information
+- Patient demographic information
+- Appointment status
+- Reminder information
+- Booking lead time
+- Distance to clinic
 - Waiting time
-- Appointment outcomes
-
-Each row represents an appointment record.
+- Other appointment-related variables
 
 ---
 
-## Business Questions
+## Data Quality Assessment
 
-The analysis was designed around the following business questions:
+An initial data quality assessment was conducted before analysis.
 
-1. What percentage of scheduled appointments are attended, cancelled, or missed?
-2. Which factors are most strongly associated with appointment no-shows?
-3. Does booking lead time affect appointment attendance?
-4. Do appointment reminders affect attendance and no-show rates?
-5. Does distance from the clinic influence appointment attendance?
-6. Which patient groups have the highest attendance and no-show rates?
-7. What is the average patient waiting time?
-8. Which appointment types experience higher waiting times or no-show rates?
-9. What areas of the appointment process could HealthConnect improve?
+### Key findings
 
----
+- **5,000 records** were identified.
+- **18 columns** are available.
+- **No duplicate records** were identified.
+- Missing values were identified in three main columns:
+  - `reminder_channel` – 1,366 missing values
+  - `distance_to_clinic_km` – 90 missing values
+  - `waiting_time_minutes` – 60 missing values
 
-## Key Performance Indicators
+The missing values in `reminder_channel` require particular attention because a blank value may indicate that no reminder was sent rather than that the information was missing.
 
-Five core KPIs were identified for the project:
-
-### 1. Appointment Attendance Rate
-
-Percentage of scheduled appointments that were attended.
-
-### 2. Appointment No-Show Rate
-
-Percentage of scheduled appointments where patients did not attend and did not cancel.
-
-### 3. Reminder Effectiveness
-
-Comparison of attendance between patients who received reminders and those who did not.
-
-### 4. Average Waiting Time
-
-Average number of minutes patients wait before receiving service.
-
-### 5. Average Booking Lead Time
-
-Average number of days between booking an appointment and the scheduled appointment date.
-
-These KPIs provide a balanced view of appointment performance, missed appointments, reminder effectiveness, waiting experience, and booking behaviour.
+Missing values will therefore be investigated and handled based on the business meaning of each field rather than automatically replacing them with zero.
 
 ---
 
-## Data Preparation
+## Proposed KPIs
 
-The data preparation process was carried out using **Power Query in Power BI**.
+The following KPIs were proposed for the analysis:
 
-Key preparation activities included:
+### 1. Appointment Attendance Rate (%)
 
-- Reviewing column data types
-- Checking missing values
-- Checking for duplicate records
-- Identifying inconsistent values
-- Separating relevant components of compound fields where necessary
-- Creating meaningful categories for numerical variables
-- Categorising waiting-time values
-- Preparing fields for analysis and visualisation
-- Creating calculated measures using DAX
+Measures the percentage of scheduled appointments that patients attended.
 
-The original dataset was preserved, while transformed data was used for analysis.
+### 2. Appointment No-Show Rate (%)
 
----
+Measures the percentage of scheduled appointments where patients did not attend and did not cancel.
 
-## Analysis & Dashboard
+### 3. Reminder Effectiveness (%)
 
-The project was developed using **Microsoft Power BI**.
+Compares attendance among patients who received reminders with those who did not.
 
-The dashboard focuses on:
+### 4. Average Waiting Time (Minutes)
 
-### Appointment Performance
+Measures the average amount of time patients wait before receiving service.
 
-- Attendance rate
-- No-show rate
-- Cancellation patterns
-- Overall appointment outcomes
+### 5. Average Booking Lead Time (Days)
 
-### Reminder Analysis
-
-- No-show rate by reminder sent
-- Attendance comparison between patients who received reminders and those who did not
-- Reminder channel performance where sufficient data is available
-
-### Patient & Appointment Analysis
-
-- Attendance and no-show patterns across relevant patient groups
-- Appointment-type performance
-- Booking lead-time patterns
-
-### Waiting-Time Analysis
-
-- Average waiting time
-- Waiting-time categories
-- Waiting-time patterns across relevant appointment groups
+Measures the average number of days between booking an appointment and the scheduled appointment date.
 
 ---
 
-## Reminder Analysis
+## Initial Analysis Approach
 
-A key part of the analysis evaluates whether appointment reminders are associated with better attendance.
+The analysis will follow these stages:
 
-The analysis compares:
+1. **Data Cleaning**
+   - Review data types
+   - Identify missing values
+   - Check for duplicates
+   - Investigate inconsistent entries
 
-### Reminder Sent
+2. **Descriptive Analysis**
+   - Calculate attendance rate
+   - Calculate no-show rate
+   - Calculate average waiting time
+   - Calculate average booking lead time
 
-- Yes
-- No
+3. **Segmentation**
+   - Analyse appointment outcomes by patient demographics
+   - Compare different reminder channels
+   - Group booking lead time
+   - Group distance to clinic
 
-It also evaluates reminder performance by channel where sufficient data is available, such as:
+4. **Comparative Analysis**
+   - Compare reminder recipients with non-recipients
+   - Compare attendance across booking lead-time groups
+   - Examine the relationship between distance and attendance
+   - Compare waiting times across appointment types
 
-- SMS
-- Email
-- Other available channels
-
-The analysis focuses on identifying relationships and patterns rather than claiming that reminders directly cause patients to attend.
-
----
-
-## Tools & Technologies
-
-| Tool | Purpose |
-|---|---|
-| Microsoft Power BI | Data analysis, DAX measures and dashboard development |
-| Power Query | Data cleaning and transformation |
-| DAX | KPI and analytical measure development |
-| Microsoft Excel | Supporting data inspection and preparation |
-| GitHub | Project documentation and version control |
-
----
-
-## Dashboard
-
-The Power BI dashboard provides an interactive view of HealthConnect appointment performance.
-
-Key dashboard areas include:
-
-- Appointment KPIs
-- Attendance analysis
-- No-show analysis
-- Reminder effectiveness
-- Reminder channel comparison
-- Waiting-time analysis
-- Patient segmentation
-- Appointment trends
+5. **Insight Generation**
+   - Identify important trends and patterns
+   - Highlight potential operational issues
+   - Develop practical recommendations for HealthConnect
 
 ---
 
-## Key Insights
+## Assumptions and Limitations
 
-The analysis is intended to identify:
-
-- The overall scale of appointment attendance and missed appointments
-- Whether reminder recipients demonstrate different attendance behaviour
-- Which reminder channels perform better where sufficient data exists
-- Patient groups associated with higher no-show rates
-- Whether longer booking lead times are associated with missed appointments
-- Groups experiencing longer waiting times
-- Areas where HealthConnect can improve appointment operations and patient experience
-
-> **Note:** Final insights should be updated with the actual numerical findings from the Power BI dashboard.
-
----
-
-##  Business Recommendations
-
-Based on the analytical findings, HealthConnect can consider:
-
-1. **Strengthening appointment reminder processes** for patients who demonstrate higher no-show behaviour.
-2. **Prioritising effective reminder channels** based on observed attendance performance.
-3. **Monitoring high-risk patient or appointment groups** and developing targeted engagement strategies.
-4. **Reviewing long booking lead times** where they are associated with higher no-show rates.
-5. **Investigating long waiting-time categories** to identify operational bottlenecks.
-6. **Using dashboard KPIs for continuous monitoring** of attendance and no-show performance.
-7. **Combining data analytics with patient-support initiatives** to improve the overall appointment experience.
-
----
-
-## Assumptions
-
-The analysis is based on the following assumptions:
+### Assumptions
 
 - Each row represents one appointment record.
-- Appointment status accurately represents the outcome of the appointment.
-- The available variables are sufficiently representative for exploratory analysis.
-- Reminder information accurately reflects the reminder recorded for an appointment.
-- Missing values are handled according to the meaning and context of each variable.
+- Appointment status accurately represents the outcome of an appointment.
+- The available variables are sufficient to identify major patterns in appointment attendance.
+- Missing reminder information requires investigation before interpretation.
+
+### Limitations
+
+- Some fields contain missing values.
+- The dataset may not capture every factor that influences patient attendance.
+- The analysis identifies relationships and patterns but does not establish causation.
+- The dataset represents a specific period and may not reflect long-term behaviour.
 
 ---
 
-## Limitations
+💡 Expected Business Value
 
-- The dataset contains missing values, particularly within reminder-related information.
-- The dataset may not capture all factors that influence attendance, such as personal circumstances, health conditions, or unexpected events.
-- The analysis identifies relationships and patterns but does not establish direct causation.
-- The dataset represents a specific period and may not fully represent long-term patient behaviour.
-- Reminder-channel comparisons may be affected by differences in the number of records available for each channel.
+The analysis is expected to help HealthConnect:
 
----
-
-## Future Improvements
-
-Future stages of the project could include:
-
-- Developing a predictive model for appointment no-shows
-- Identifying patients at higher risk of missing appointments
-- Building automated reminder recommendations
-- Expanding the analysis to longer periods of appointment data
-- Developing more advanced patient segmentation
-- Integrating analytics with an AI-powered patient support solution
-- Continuously monitoring appointment KPIs
+- Reduce appointment no-shows
+- Improve appointment attendance
+- Evaluate reminder strategies
+- Identify patient groups requiring additional attention
+- Understand factors associated with missed appointments
+- Identify causes of longer waiting times
+- Improve appointment scheduling and management
+- Enhance the overall patient experience
 
 ---
 
-👤 Author
+🛠️ Tools & Technologies
 
-Wisdom Ukah
+The project will use data analysis and visualisation tools to clean, analyse, and communicate insights from the HealthConnect appointment dataset.
 
-Aspiring Data Analyst | Computer Science Student
+**Tools:**
+
+- Microsoft Excel
+- Power BI
+- Power Query
+
+---
