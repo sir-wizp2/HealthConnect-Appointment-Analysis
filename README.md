@@ -173,3 +173,10 @@ The project will use data analysis and visualisation tools to clean, analyse, an
 - Power Query
 
 ---
+## Author
+
+**Wisdom Chibuike Ukah**
+
+Data Analyst | Computer Science Student
+
+AnalystLab Africa – Week 4 Experience Lab
