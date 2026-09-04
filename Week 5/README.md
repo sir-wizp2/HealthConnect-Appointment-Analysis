@@ -497,7 +497,7 @@ The business understanding, data quality assessment, business questions, KPIs, a
 
 ## Author
 
-**Wisdom Ukah**
+**Wisdom Chibuike Ukah**
 
 Data Analyst | Computer Science Student
 
