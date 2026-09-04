@@ -57,7 +57,6 @@ The dataset contains a combination of:
 |------|---------|
 | Microsoft Power BI | Data visualization and dashboard creation |
 | Power Query | Data cleaning and transformation |
-| Microsoft Excel | Data validation and review |
 
 ---
 
