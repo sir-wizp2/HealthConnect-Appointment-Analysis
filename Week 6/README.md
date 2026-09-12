@@ -47,6 +47,8 @@ This repository contains the full analytical pipeline — from KPI validation to
 ### Week 5 — Baseline Analysis
 - ✅ KPI validation (no-show rate, attendance rate)
 - ✅ No-show rate by reminder channel
+- ✅ Initial ML-ready dataset created (4 features)
+- 📌 Finding: WhatsApp had the lowest no-show rate (49.8%)
 
 
 ### Week 6 — Deep Dive + Cross-Track Integration
@@ -127,8 +129,6 @@ The Data Science track trained a **Random Forest model** to predict `no_show`. M
 - ⚠️ False Negatives ≈ True Positives — optimize **recall**, not accuracy
 - ⚠️ Overall accuracy ~53%
 
-📄 Full details: [`reports/cross_track_integration_report.md`](reports/cross_track_integration_report.md)
-
 ---
 
 ## 🛠️ Dashboard Structure
@@ -145,10 +145,9 @@ The Data Science track trained a **Random Forest model** to predict `no_show`. M
 **Visuals:**
 
 1. No-Show Rate by Distance × Age Group (heatmap)
-2. Highest No-Show Risk Combinations (bar)
+2. Highest No-Show Risk Combinations (Cluster Column chart)
 3. Attendance Rate by Lead Time × Appointment Type (matrix)
 4. Reminder Channel Performance (table — volume + rate)
-5. **Cross-Track Validation Card** ← *Week 6 new*
 
 ---
 
@@ -167,18 +166,6 @@ The Data Science track trained a **Random Forest model** to predict `no_show`. M
 
 - [x] **Week 5** — Baseline analysis + ML-ready dataset
 - [x] **Week 6** — Deep dive + cross-track integration
-- [ ] **Week 7** — Intervention design + model iteration
-- [ ] **Week 8** — Final presentation + handoff
-
----
-
-## 📎 Reports
-
-| Report | Link |
-|---|---|
-| Week 5 Report | [`reports/week5_report.md`](reports/week5_report.md) |
-| Week 6 Report | [`reports/week6_report.md`](reports/week6_report.md) |
-| Cross-Track Integration Report | [`reports/cross_track_integration_report.md`](reports/cross_track_integration_report.md) |
 
 ---
 
@@ -186,15 +173,5 @@ The Data Science track trained a **Random Forest model** to predict `no_show`. M
 
 | Name | Track | Contribution |
 |---|---|---|
-| [Your Name] | Data Analytics | Segmentation, dashboards, cross-track triangulation |
-| [DS Name] | Data Science | Random Forest model, feature importance, error analysis |
-
----
-
-## 📄 License
-
-This project is for educational and internal analysis purposes.
-
----
-
-*Last updated: Week 6*
+| [Wisdom Chibuike Ukah] | Data Analytics | Segmentation, dashboards, cross-track triangulation |
+| [Dorsilla Kemunto ] | Data Science | Random Forest model, feature importance, error analysis |
