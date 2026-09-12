@@ -20,8 +20,8 @@ This repository contains the full analytical pipeline — from KPI validation to
 |---|---|
 | **Dataset size** | 5,000 appointments |
 | **Target variable** | `no_show` |
-| **Analyst** | [Your Name] — Data Analytics |
-| **Collaborator** | [DS Name] — Data Science |
+| **Analyst** | [Wisdom Chibuike Ukah] — Data Analytics |
+| **Collaborator** | [Dorsilla Kemunto ] — Data Science |
 | **Tools** | Power BI · Python (pandas, scikit-learn) |
 | **Current phase** | Week 6 — Deep dive + cross-track integration |
 
@@ -39,32 +39,6 @@ This repository contains the full analytical pipeline — from KPI validation to
 | Attendance Rate — Without Reminder | 42.7% |
 
 > The **4.9 pp gap** between reminded and non-reminded appointments confirms reminders help — but even reminded patients attend less than half the time.
-
----
-
-## 🗂️ Repository Structure
-healthconnect-attendance/
-│
-├── data/
-│ ├── raw/ # Original dataset (5,000 appointments)
-│ └── ml_ready/ # Week 5 ML-ready dataset (4 features)
-│
-├── notebooks/
-│ ├── week5_baseline_analysis.ipynb
-│ └── week6_deep_dive.ipynb
-│
-├── powerbi/
-│ └── healthconnect_dashboard.pbix
-│
-├── reports/
-│ ├── week5_report.md
-│ ├── week6_report.md
-│ └── cross_track_integration_report.md
-│
-├── README.md
-└── LICENSE
-
-text
 
 ---
 
