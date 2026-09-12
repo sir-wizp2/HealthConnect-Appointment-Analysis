@@ -47,16 +47,13 @@ This repository contains the full analytical pipeline — from KPI validation to
 ### Week 5 — Baseline Analysis
 - ✅ KPI validation (no-show rate, attendance rate)
 - ✅ No-show rate by reminder channel
-- ✅ Initial ML-ready dataset created (4 features)
-- 📌 Finding: WhatsApp had the lowest no-show rate (49.8%)
+
 
 ### Week 6 — Deep Dive + Cross-Track Integration
 - ✅ Attendance rate by reminder channel (SMS = 49.6%)
 - ✅ No-show rate by distance × age group
 - ✅ Highest-risk combinations (distance × lead time)
 - ✅ Attendance rate by booking lead time × appointment type
-- ✅ Cross-track integration with Data Science (Random Forest validation)
-- ✅ Cross-Track Validation Card added to dashboard
 
 ---
 
