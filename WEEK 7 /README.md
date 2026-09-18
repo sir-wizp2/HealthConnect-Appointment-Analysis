@@ -1,88 +1,102 @@
-# HealthConnect Clinic Experience Lab — Data Analytics Track
+# HealthConnect Clinic — Week 7: Testing, Refinement & End-to-End Validation
 
-**Programme:** AnalystLab Africa Experience Lab Internship
-**Project:** HealthConnect Clinic Experience Lab
+**Programme:** AnalystLab Africa Experience Lab
 **Track:** Data Analytics
-**Intern:** [Your Full Name]
-**Repository:** [Your GitHub Username]/HealthConnect-Experience-Lab
+**Intern:** [Wisdom Chibuike Ukah]
+**Week:** 7
 
 ---
 
-## Project Overview
+## What This Week Is About
 
-HealthConnect Clinic is a fictional healthcare provider seeking to reduce missed appointments, improve appointment attendance, make better use of appointment slots, and provide more effective administrative support to patients.
+Week 6 was about building and integrating. Week 7 is about **testing**.
 
-The overall project question is:
+This week I went back through my Week 6 dashboard and proved that every number on it is correct. I recalculated every KPI from the raw CSV, tested every filter, checked whether my key findings held up when the data was segmented, and worked with the Data Science track to confirm our top drivers matched.
 
-> How can HealthConnect Clinic use data and AI to reduce missed appointments and improve the patient support experience?
-
-This repository contains the Data Analytics track deliverables produced across the AnalystLab Africa Experience Lab programme (Weeks 4–8).
+The goal was not to build something new. The goal was to prove the existing work is accurate and reliable before Week 8 final integration and presentation.
 
 ---
 
-## Weekly Progression
+## What I Tested
 
-| Week | Stage | Focus |
-|------|-------|-------|
-| Week 4 | Problem Understanding | Resource review and solution planning |
-| Week 5 | Analysis & Development | Initial EDA, KPIs, dashboard, business insights |
-| Week 6 | Integration & Advanced Development | Deeper analysis, validated findings, improved dashboard, cross-track integration |
-| **Week 7** | **Testing, Refinement & End-to-End Validation** | **Systematic testing, KPI validation, dashboard refinement, cross-track re-validation** |
-| Week 8 | Final Integration & Presentation | End-to-end integration and final presentation |
+| # | Test | Method |
+|---|------|--------|
+| 1 | KPI accuracy | Recalculated each KPI from raw CSV in Python |
+| 2 | Distance filter | Applied each distance band, checked KPI cards |
+| 3 | Age group filter | Applied each age band, checked no-show values |
+| 4 | Reminder channel filter | Applied each channel, checked attendance rates |
+| 5 | Appointment type filter | Applied each type, checked no-show rates |
+| 6 | Booking lead days filter | Applied each category, checked attendance rates |
+| 7 | Highest-risk combination | Filtered Very Far + 2–4 Weeks |
+| 8 | Filter reset | Reset all filters, checked KPIs returned to baseline |
+| 9 | Channel × distance robustness | Re-ranked channels per distance band |
+| 10 | Risk × appointment type robustness | Tested highest-risk combo across all types |
+| 11 | Cross-track model re-validation | Worked with Data Science on feature alignment |
 
 ---
 
-## Week 7 — Testing, Refinement & End-to-End Validation
+## Results
 
-### Objective
+**All tests passed. One caveat documented.**
 
-Systematically test, refine, and validate the Week 6 dashboard outputs to ensure accuracy, consistency, and readiness for final integration in Week 8.
+### KPI Validation
 
-### What Was Tested
+| KPI | Dashboard Value | Manual Recalculation | Result |
+|-----|----------------|---------------------|--------|
+| Attendance Rate | 46.3% | 46.3% | PASS |
+| No-Show Rate | 48.5% | 48.5% | PASS |
+| Attendance with Reminder | 47.6% | 47.6% | PASS |
+| Attendance without Reminder | 42.7% | 42.7% | PASS |
+| Reminder Effectiveness Gap | 4.9 pp | 4.9 pp | PASS |
 
-1. **KPI accuracy** — independent recalculation of all dashboard KPIs from the raw CSV
-2. **Dashboard filters** — behaviour and correctness of all seven sidebar filters
-3. **Channel ranking robustness** — verification that SMS remains the best reminder channel across all distance bands
-4. **Highest-risk combination** — validation of the "Very Far Distance + 2–4 Weeks" finding across all appointment types
-5. **Cross-track model alignment** — collaboration with the Data Science track to confirm feature importance alignment
+### Filter Testing
 
-### Testing Results Summary
+All seven sidebar filters tested successfully. Every value matched manual recalculation.
 
-| Test Category | Tests Run | Passed | Failed | Caveats |
-|---|---|---|---|---|
-| KPI Validation | 5 | 5 | 0 | 0 |
-| Dashboard Filters | 7 | 7 | 0 | 0 |
-| Robustness Checks | 2 | 2 | 0 | 1 (Moderate distance channel ambiguity) |
-| Cross-Track Re-Validation | 1 | 1 | 0 | 0 |
-| **Total** | **15** | **15** | **0** | **1** |
+The highest-risk combination (Very Far Distance + 2–4 Weeks) returned **83.3% no-show** as expected.
 
-**All 15 tests passed. One caveat documented.**
+Resetting all filters returned KPIs to baseline (48.5% / 46.3% / 47.6% / 42.7%) with no leakage.
 
-### Key Validated Findings
+### Channel Ranking
 
-- **Overall No-Show Rate:** 48.5% (independently recalculated and verified)
-- **Overall Attendance Rate:** 46.3% (verified)
-- **Reminder Effectiveness Gap:** 4.9 percentage points (47.6% with reminders vs 42.7% without)
-- **Distance is the strongest single driver:** Very Far Distance = 68.1% no-show vs Close Distance = 46.5%
-- **Highest-risk combination:** Very Far Distance + 2–4 Weeks = **83.3% no-show** (confirmed across all four appointment types)
-- **Best reminder channel:** SMS at 49.6% attendance (caveat: Email narrowly outperforms SMS in the Moderate Distance band at 47.1% vs 46.4%)
+Aggregate ranking confirmed:
 
-### Dashboard Refinements Made
+1. SMS — 49.6%
+2. Email — 46.5%
+3. WhatsApp — 44.6%
+4. None — 42.7%
 
-1. Added "% of total" labels to the donut chart to prevent Cancelled vs No-Show confusion
-2. Reworked the Reminder Channel Performance table to show Total, Attended, and Rate side by side
-3. Added a dedicated Highest No-Show Risk Combination chart on Page 3
-4. Sharpened chart titles to include the metric being shown
-5. Tightened filter interaction so selecting one filter clears stale selections in dependent visuals
+**Caveat:** When re-ranked within distance bands, SMS won 3 of 4 bands. In the Moderate Distance band, Email narrowly outperformed SMS (47.1% vs 46.4%). Documented as a caveat, not a failure.
 
-### Cross-Track Collaboration
+### Highest-Risk Combination
 
-**Track:** Data Science
-**Dependency:** Model feature importance validation
+Very Far Distance + 2–4 Weeks = **83.3% no-show**. This held true across all four appointment types (Diagnostic Test, Follow-up, General Consultation, Specialist Consultation).
 
-The Data Science track's candidate model identified **Booking Lead Time** and **Distance** as the top two predictive features. My analytics work independently identified the same two variables as the strongest drivers of no-show behaviour.
+---
 
-During this collaboration, an artefact column named `Unnamed: 0` was identified in the raw CSV export and removed. The model was re-run, and the top two features remained unchanged. Both tracks now use a single cleaned CSV file, and the dashboard and model are provably aligned on 5,000 records.
+## Cross-Track Work
 
-**Full collaboration record:** See `Week7_Report.pdf`, Section 2.11.
+**Collaborated with:** Data Science
+
+**What we tested:** Whether the model's top features matched my analytics top drivers.
+
+**Finding:** Both tracks independently identified **Booking Lead Time** and **Distance** as the top two drivers.
+
+**Issue found:** An artefact column named `Unnamed: 0` was present in the raw CSV export.
+
+**Action taken:** Data Science removed the column and re-ran the model.
+
+**Retest result:** Top two features remained unchanged.
+
+**What changed:** Both tracks now use a single cleaned CSV. Dashboard and model are aligned on 5,000 records.
+
+---
+
+## Key Findings (Validated)
+
+- Overall No-Show Rate: **48.5%**
+- Reminders improve attendance by **4.9 percentage points**
+- Distance is the strongest driver: Very Far = 68.1% vs Close = 46.5%
+- Highest-risk segment: Very Far + 2–4 Weeks = **83.3% no-show**
+- Best reminder channel: SMS (49.6%), with Moderate Distance caveat
 
